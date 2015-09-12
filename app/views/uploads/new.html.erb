@@ -1,0 +1,21 @@
+<div class="container col-md-3 col-md-offset-4">
+
+  <h2>Upload Files</h2>
+
+  <% if @uploads_with_same_hash %>
+    <h1>Error:</h1>
+    <p>File already exists <%= @uploads_with_same_hash['identifier'] %></p>
+  <% end %>
+
+  <%= form_for :upload, url: uploads_path do |f| %>
+    <div class="form-group">
+      <label for='upload_uploaded_file'>File input</label>
+      <%= f.file_field :uploaded_file, multiple: true %>
+    </div>
+    <div class="form-group">
+      <label for='upload_expires'>Expires</label>
+      <%= f.datetime_local_field :expires %>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  <% end %>
+</div>

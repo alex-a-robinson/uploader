@@ -1,0 +1,8 @@
+<div class="container">
+  <% if @uploads.empty? or @uploads.length > 1%>
+    <h2>Error:</h2>
+    <p><%= @uploads.length %> result(s) were returned</p>
+  <% else %>
+    <%= @data %>
+  <% end %>
+</div>

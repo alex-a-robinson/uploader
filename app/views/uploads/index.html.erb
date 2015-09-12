@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>File uploader</h2>
+
+  <%= link_to 'New upload', new_upload_path %>
+  <br />
+  <table class='table table-hover table-condensed table-bordered'>
+    <tr>
+      <th>Identifier</th>
+      <th>Filename</th>
+      <th>Owner</th>
+      <th>Expires</th>
+      <th>Filesize</th>
+      <th>Filehash</th>
+      <th>Content Type</th>
+      <th>Updated At</th>
+      <th>Last Modified</th>
+      <th>Delete</th>
+    </tr>
+   
+    <% @uploads.each do |upload| %>
+      <tr>
+        <td><a href="/<%= upload.identifier %>"><%= upload.identifier %></a></td>
+        <td><a href="/<%= upload.filename %>"><%= upload.filename %></a></td>
+        <td><%= upload.owner %></td>
+        <td><%= upload.expires %></td>
+        <td><%= number_to_human_size(upload.filesize) %></td>
+        <td><%= upload.filehash %></td>
+        <td><%= upload.content_type %></td>
+        <td><%= upload.created_at %></td>
+        <td><%= upload.updated_at %></td>
+        <td><%= link_to 'Destroy', '/' + upload.identifier, method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
